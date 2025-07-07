@@ -1,0 +1,11 @@
+[build]
+dockerfile = "Dockerfile"
+
+[deploy]
+startCommand = "n8n start"
+healthcheckPath = "/healthz"
+healthcheckTimeout = 300
+restartPolicyType = "always"
+
+[env]
+NODE_ENV = "production"
