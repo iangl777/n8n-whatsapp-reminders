@@ -7,17 +7,24 @@ ENV N8N_PORT=8080
 ENV N8N_PROTOCOL=https
 ENV N8N_BASIC_AUTH_ACTIVE=true
 ENV N8N_BASIC_AUTH_USER=admin
-ENV DB_TYPE=postgresdb
 ENV TZ=America/Mexico_City
 
 # Configuración de PostgreSQL
+ENV DB_TYPE=postgresdb
 ENV DB_POSTGRESDB_SSL=true
+
+# Configuración adicional necesaria
+ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false
+ENV GENERIC_TIMEZONE=America/Mexico_City
 
 # Crear directorio de trabajo
 WORKDIR /home/node
 
+# Asegurar permisos correctos
+USER node
+
 # Exponer puerto
 EXPOSE 8080
 
-# Comando para iniciar n8n
-CMD ["n8n"]
+# Comando para iniciar n8n (CORREGIDO)
+CMD ["n8n", "start"]
