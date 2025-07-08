@@ -1,5 +1,8 @@
-# Dockerfile para n8n en Render
-FROM n8nio/n8n:latest
+# Dockerfile simple para n8n en Render
+FROM node:18
+
+# Instalar n8n globalmente
+RUN npm install -g n8n@latest
 
 # Variables de entorno básicas
 ENV N8N_HOST=0.0.0.0
@@ -20,11 +23,8 @@ ENV GENERIC_TIMEZONE=America/Mexico_City
 # Crear directorio de trabajo
 WORKDIR /home/node
 
-# Asegurar permisos correctos
-USER node
-
 # Exponer puerto
 EXPOSE 8080
 
-# Comando para iniciar n8n (CORREGIDO)
+# Comando para iniciar n8n
 CMD ["n8n", "start"]
