@@ -1,5 +1,5 @@
 # Dockerfile simple para n8n en Render
-FROM node:18
+FROM node:20
 
 # Instalar n8n globalmente
 RUN npm install -g n8n@latest
